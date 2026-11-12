@@ -1,0 +1,12 @@
+{
+  "name": "aetherforge-mtg",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.static.json && node build-static.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc -p tsconfig.test.json && node -e \"require('node:fs').mkdirSync('.test-build',{recursive:true});require('node:fs').writeFileSync('.test-build/package.json','{\\\"type\\\":\\\"commonjs\\\"}')\" && node --test tests/core-regression.cjs",
+    "start": "node serve.mjs"
+  }
+}
