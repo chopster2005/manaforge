@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: manaforge-mtg
+    runtime: docker
+    plan: starter
+    region: ohio
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    disk:
+      name: manaforge-data
+      mountPath: /app/data
+      sizeGB: 10
+    envVars:
+      - key: MANAFORGE_AUTH_ENABLED
+        value: "true"
+      - key: MANAFORGE_COOKIE_SECURE
+        value: "true"
+      - key: MANAFORGE_DATA_DIR
+        value: /app/data
+      - key: MANAFORGE_SESSION_SECRET
+        generateValue: true
+      - key: MANAFORGE_PASSWORD
+        sync: false
